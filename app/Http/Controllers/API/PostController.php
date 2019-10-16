@@ -94,7 +94,46 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $input = $request->all();
+
+        $validator = Validator::make($input, [
+            'titulo' => 'required',
+            'conteudo' => 'required'
+        ]);
+
+        if ($validator->fails()) {
+            $response = [
+                'success' => false,
+                'data' => 'Erro Validação.',
+                'message' => $validator->errors()
+            ];
+            return response()->json($response, 404);
+        }
+
+        $post = Post::find($id);
+
+        if (is_null($post)) {
+            $response = [
+                'success' => false,
+                'data' => 'Empty',
+                'message' => 'Post not found.'
+            ];
+            return response()->json($response, 404);
+        }
+        
+        $post->titulo = $input['titulo'];
+        $post->conteudo = $input['conteudo'];
+        $post->save();
+
+        $data = $post->toArray();
+
+        $response = [
+            'success' => true,
+            'data' => $data,
+            'message' => 'Post updated successfully.'
+        ];
+
+        return response()->json($response, 200);
     }
 
     /**
@@ -105,6 +144,23 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Post::find($id);
+        if (is_null($post)) {
+            $response = [
+                'success' => false,
+                'data' => 'Empty',
+                'message' => 'Post not found.'
+            ];
+            return response()->json($response, 404);
+        }
+
+        $post->delete();
+        $response = [
+            'success' => true,
+            'data' => $data,
+            'message' => 'Post deleted successfully.'
+        ];
+
+        return response()->json($response, 200);
     }
 }

@@ -84,7 +84,7 @@ class ComentarioController extends Controller
             return response()->json($response, 404);
         }
 
-        $data = $comentario->toArray(); 
+        $data = $comentario->toArray();
         $response = [
             'success' => true,
             'data' => $data,
