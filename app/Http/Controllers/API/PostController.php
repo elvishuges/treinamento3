@@ -73,7 +73,6 @@ class PostController extends Controller
     public function show($id)
     {
         $post = Post::find($id);
-        $data = $post->toArray();
 
         if (is_null($post)) {
             $response = [
@@ -83,6 +82,16 @@ class PostController extends Controller
             ];
             return response()->json($response, 404);
         }
+        
+        $data = $post->toArray();
+
+        $response = [
+            'success' => true,
+            'data' => $data,
+            'message' => 'Post returned successfully.'
+        ];
+
+        return response()->json($response, 200);
     }
 
     /**
@@ -155,6 +164,7 @@ class PostController extends Controller
         }
 
         $post->delete();
+        $data = $post->toArray();
         $response = [
             'success' => true,
             'data' => $data,

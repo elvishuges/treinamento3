@@ -18,3 +18,7 @@ Route::get('/', function () {
 Route::resource('posts', 'API\PostController');
 Route::resource('users', 'API\UserController');
 Route::resource('comentarios', 'API\ComentarioController');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
