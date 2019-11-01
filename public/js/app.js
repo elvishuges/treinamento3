@@ -1885,30 +1885,114 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      type: 'month',
-      start: '2019-01-01',
-      end: '2019-01-06',
-      typeOptions: [{
-        text: 'Day',
-        value: 'day'
+      selected: [2],
+      settings: [],
+      items: [{
+        action: '15 min',
+        headline: 'Brunch this weekend?',
+        title: 'Ali Connors',
+        subtitle: "I'll be in your neighborhood doing errands this weekend. Do you want to hang out?"
       }, {
-        text: '4 Day',
-        value: '4day'
+        action: '2 hr',
+        headline: 'Summer BBQ',
+        title: 'me, Scrott, Jennifer',
+        subtitle: "Wish I could come, but I'm out of town this weekend."
       }, {
-        text: 'Week',
-        value: 'week'
+        action: '6 hr',
+        headline: 'Oui oui',
+        title: 'Sandra Adams',
+        subtitle: 'Do you have Paris recommendations? Have you ever been?'
       }, {
-        text: 'Month',
-        value: 'month'
+        action: '12 hr',
+        headline: 'Birthday gift',
+        title: 'Trevor Hansen',
+        subtitle: 'Have any ideas about what we should get Heidi for her birthday?'
       }, {
-        text: 'Custom Daily',
-        value: 'custom-daily'
-      }, {
-        text: 'Custom Weekly',
-        value: 'custom-weekly'
+        action: '18hr',
+        headline: 'Recipe to try',
+        title: 'Britta Holt',
+        subtitle: 'We should eat this: Grate, Squash, Corn, and tomatillo Tacos.'
       }]
     };
   }
@@ -33435,29 +33519,247 @@ var render = function() {
     "div",
     { attrs: { id: "app" } },
     [
-      _c("v-app", { attrs: { id: "inspire" } }, [
-        _c(
-          "div",
-          [
-            _c("v-alert", { attrs: { type: "success" } }, [
-              _vm._v("\r\n        I'm a success alert.\r\n      ")
-            ]),
-            _vm._v(" "),
-            _c("v-alert", { attrs: { type: "info" } }, [
-              _vm._v("\r\n        I'm an info alert.\r\n      ")
-            ]),
-            _vm._v(" "),
-            _c("v-alert", { attrs: { type: "warning" } }, [
-              _vm._v("\r\n        I'm a warning alert.\r\n      ")
-            ]),
-            _vm._v(" "),
-            _c("v-alert", { attrs: { type: "error" } }, [
-              _vm._v("\r\n        I'm an error alert.\r\n      ")
-            ])
-          ],
-          1
-        )
-      ])
+      _c(
+        "v-app",
+        { attrs: { id: "inspire" } },
+        [
+          _c(
+            "v-card",
+            { staticClass: "mx-auto", attrs: { "max-width": "400" } },
+            [
+              _c(
+                "v-toolbar",
+                { attrs: { color: "purple", dark: "" } },
+                [
+                  _c("v-app-bar-nav-icon"),
+                  _vm._v(" "),
+                  _c("v-toolbar-title", [_vm._v("Settings")]),
+                  _vm._v(" "),
+                  _c("v-spacer"),
+                  _vm._v(" "),
+                  _c(
+                    "v-btn",
+                    { attrs: { icon: "" } },
+                    [_c("v-icon", [_vm._v("mdi-magnify")])],
+                    1
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-list",
+                { attrs: { subheader: "", "three-line": "" } },
+                [
+                  _c("v-subheader", [_vm._v("User Controls")]),
+                  _vm._v(" "),
+                  _c(
+                    "v-list-item",
+                    [
+                      _c(
+                        "v-list-item-content",
+                        [
+                          _c("v-list-item-title", [
+                            _vm._v("Content filtering")
+                          ]),
+                          _vm._v(" "),
+                          _c("v-list-item-subtitle", [
+                            _vm._v(
+                              "Set the content filtering level to restrict appts that can be downloaded"
+                            )
+                          ])
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-list-item",
+                    [
+                      _c(
+                        "v-list-item-content",
+                        [
+                          _c("v-list-item-title", [_vm._v("Password")]),
+                          _vm._v(" "),
+                          _c("v-list-item-subtitle", [
+                            _vm._v(
+                              "Require password for purchase or use password to restrict purchase"
+                            )
+                          ])
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c("v-divider"),
+              _vm._v(" "),
+              _c(
+                "v-list",
+                { attrs: { flat: "", subheader: "", "three-line": "" } },
+                [
+                  _c("v-subheader", [_vm._v("General")]),
+                  _vm._v(" "),
+                  _c(
+                    "v-list-item-group",
+                    {
+                      attrs: { multiple: "", "active-class": "" },
+                      model: {
+                        value: _vm.settings,
+                        callback: function($$v) {
+                          _vm.settings = $$v
+                        },
+                        expression: "settings"
+                      }
+                    },
+                    [
+                      _c("v-list-item", {
+                        scopedSlots: _vm._u([
+                          {
+                            key: "default",
+                            fn: function(ref) {
+                              var active = ref.active
+                              return [
+                                _c(
+                                  "v-list-item-action",
+                                  [
+                                    _c("v-checkbox", {
+                                      model: {
+                                        value: active,
+                                        callback: function($$v) {
+                                          active = $$v
+                                        },
+                                        expression: "active"
+                                      }
+                                    })
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "v-list-item-content",
+                                  [
+                                    _c("v-list-item-title", [
+                                      _vm._v("Notifications")
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("v-list-item-subtitle", [
+                                      _vm._v(
+                                        "Notify me about updates to apps or games that I downloaded"
+                                      )
+                                    ])
+                                  ],
+                                  1
+                                )
+                              ]
+                            }
+                          }
+                        ])
+                      }),
+                      _vm._v(" "),
+                      _c("v-list-item", {
+                        scopedSlots: _vm._u([
+                          {
+                            key: "default",
+                            fn: function(ref) {
+                              var active = ref.active
+                              return [
+                                _c(
+                                  "v-list-item-action",
+                                  [
+                                    _c("v-checkbox", {
+                                      model: {
+                                        value: active,
+                                        callback: function($$v) {
+                                          active = $$v
+                                        },
+                                        expression: "active"
+                                      }
+                                    })
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "v-list-item-content",
+                                  [
+                                    _c("v-list-item-title", [_vm._v("Sound")]),
+                                    _vm._v(" "),
+                                    _c("v-list-item-subtitle", [
+                                      _vm._v(
+                                        "Auto-update apps at any time. Data charges may apply"
+                                      )
+                                    ])
+                                  ],
+                                  1
+                                )
+                              ]
+                            }
+                          }
+                        ])
+                      }),
+                      _vm._v(" "),
+                      _c("v-list-item", {
+                        scopedSlots: _vm._u([
+                          {
+                            key: "default",
+                            fn: function(ref) {
+                              var active = ref.active
+                              return [
+                                _c(
+                                  "v-list-item-action",
+                                  [
+                                    _c("v-checkbox", {
+                                      model: {
+                                        value: active,
+                                        callback: function($$v) {
+                                          active = $$v
+                                        },
+                                        expression: "active"
+                                      }
+                                    })
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "v-list-item-content",
+                                  [
+                                    _c("v-list-item-title", [
+                                      _vm._v("Auto-add widgets")
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("v-list-item-subtitle", [
+                                      _vm._v(
+                                        "Automatically add home screen widgets when downloads complete"
+                                      )
+                                    ])
+                                  ],
+                                  1
+                                )
+                              ]
+                            }
+                          }
+                        ])
+                      })
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          )
+        ],
+        1
+      )
     ],
     1
   )
