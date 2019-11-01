@@ -1947,11 +1947,47 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       icons: ['mdi-rewind', 'mdi-play', 'mdi-fast-forward'],
       posts: [],
+      checkbox: false,
+      titulo: '',
+      conteudo: '',
+      apareceForm: false,
       transparent: 'rgba(255, 255, 255, 0)'
     };
   },
@@ -1971,6 +2007,16 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function (err) {
         return console.log(err);
       });
+    },
+    submit: function submit() {
+      fetch('/post/', {
+        method: 'post',
+        credentials: "same-origin",
+        body: 'olá'
+      }).then(function (response) {
+        this.getPosts();
+      }).then(function (json) {// change course
+      })["catch"](function (error) {});
     }
   }
 });
@@ -33549,169 +33595,234 @@ var render = function() {
         "v-app",
         { attrs: { id: "inspire" } },
         [
-          _c(
-            "v-container",
-            { staticClass: "pa-4 text-center" },
-            [
-              _c(
-                "v-row",
-                {
-                  staticClass: "fill-height",
-                  attrs: { align: "center", justify: "center" }
-                },
+          _vm.apareceForm
+            ? _c("v-container", [
+                _c(
+                  "form",
+                  [
+                    _c("v-text-field", {
+                      attrs: { counter: 10, label: "Titulo", required: "" },
+                      model: {
+                        value: _vm.titulo,
+                        callback: function($$v) {
+                          _vm.titulo = $$v
+                        },
+                        expression: "titulo"
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("v-text-field", {
+                      attrs: { label: "Conteudo", required: "" },
+                      model: {
+                        value: _vm.conteudo,
+                        callback: function($$v) {
+                          _vm.conteudo = $$v
+                        },
+                        expression: "conteudo"
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("v-checkbox", {
+                      attrs: { label: "Do you agree?", required: "" },
+                      model: {
+                        value: _vm.checkbox,
+                        callback: function($$v) {
+                          _vm.checkbox = $$v
+                        },
+                        expression: "checkbox"
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "v-btn",
+                      { staticClass: "mr-4", on: { click: _vm.submit } },
+                      [_vm._v("Postar")]
+                    ),
+                    _vm._v(" "),
+                    _c("v-btn", { on: { click: _vm.clear } }, [
+                      _vm._v("limpar")
+                    ])
+                  ],
+                  1
+                )
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          !_vm.apareceForm
+            ? _c(
+                "v-container",
+                { staticClass: "pa-4 text-center" },
                 [
-                  _vm._l(_vm.posts, function(item, i) {
-                    return [
-                      _c(
-                        "v-col",
-                        { key: i, attrs: { cols: "12", md: "3" } },
-                        [
-                          _c("v-hover", {
-                            scopedSlots: _vm._u(
-                              [
-                                {
-                                  key: "default",
-                                  fn: function(ref) {
-                                    var hover = ref.hover
-                                    return [
-                                      _c(
-                                        "v-card",
-                                        {
-                                          class: { "on-hover": hover },
-                                          attrs: { elevation: hover ? 12 : 2 }
-                                        },
-                                        [
+                  _c(
+                    "v-row",
+                    {
+                      staticClass: "fill-height",
+                      attrs: { align: "center", justify: "center" }
+                    },
+                    [
+                      _vm._l(_vm.posts, function(item, i) {
+                        return [
+                          _c(
+                            "v-col",
+                            { key: i, attrs: { cols: "12", md: "3" } },
+                            [
+                              _c("v-hover", {
+                                scopedSlots: _vm._u(
+                                  [
+                                    {
+                                      key: "default",
+                                      fn: function(ref) {
+                                        var hover = ref.hover
+                                        return [
                                           _c(
-                                            "v-img",
+                                            "v-card",
                                             {
+                                              class: { "on-hover": hover },
                                               attrs: {
-                                                src: item.img,
-                                                height: "225px"
+                                                color: "pink darken-2",
+                                                elevation: hover ? 12 : 2
                                               }
                                             },
                                             [
                                               _c(
-                                                "v-card-title",
+                                                "v-img",
                                                 {
-                                                  staticClass:
-                                                    "title white--text"
+                                                  attrs: {
+                                                    src: item.img,
+                                                    height: "225px"
+                                                  }
                                                 },
                                                 [
                                                   _c(
-                                                    "v-row",
+                                                    "v-card-title",
                                                     {
                                                       staticClass:
-                                                        "fill-height flex-column",
-                                                      attrs: {
-                                                        justify: "space-between"
-                                                      }
+                                                        "title white--text"
                                                     },
                                                     [
                                                       _c(
-                                                        "p",
+                                                        "v-row",
                                                         {
                                                           staticClass:
-                                                            "mt-4 dark subheading text-left",
-                                                          attrs: { dark: "" }
+                                                            "fill-height flex-column",
+                                                          attrs: {
+                                                            justify:
+                                                              "space-between"
+                                                          }
                                                         },
                                                         [
-                                                          _vm._v(
-                                                            _vm._s(item.titulo)
-                                                          )
-                                                        ]
-                                                      ),
-                                                      _vm._v(" "),
-                                                      _c("div", [
-                                                        _c(
-                                                          "p",
-                                                          {
-                                                            staticClass:
-                                                              "ma-0 body-1 font-weight-bold font-italic text-left"
-                                                          },
-                                                          [
-                                                            _vm._v(
-                                                              "\r\n                          " +
+                                                          _c(
+                                                            "p",
+                                                            {
+                                                              staticClass:
+                                                                "mt-4 dark subheading text-left",
+                                                              attrs: {
+                                                                dark: ""
+                                                              }
+                                                            },
+                                                            [
+                                                              _vm._v(
                                                                 _vm._s(
-                                                                  item.text
-                                                                ) +
-                                                                "\r\n                        "
-                                                            )
-                                                          ]
-                                                        ),
-                                                        _vm._v(" "),
-                                                        _c(
-                                                          "p",
-                                                          {
-                                                            staticClass:
-                                                              "caption font-weight-medium font-italic text-left"
-                                                          },
-                                                          [
-                                                            _vm._v(
-                                                              "\r\n                          " +
-                                                                _vm._s(
-                                                                  item.subtext
-                                                                ) +
-                                                                "\r\n                        "
-                                                            )
-                                                          ]
-                                                        )
-                                                      ]),
-                                                      _vm._v(" "),
-                                                      _c(
-                                                        "div",
-                                                        {
-                                                          staticClass:
-                                                            "align-self-center"
-                                                        },
-                                                        _vm._l(
-                                                          _vm.icons,
-                                                          function(
-                                                            icon,
-                                                            index
-                                                          ) {
-                                                            return _c(
-                                                              "v-btn",
+                                                                  item.titulo
+                                                                )
+                                                              )
+                                                            ]
+                                                          ),
+                                                          _vm._v(" "),
+                                                          _c("div", [
+                                                            _c(
+                                                              "p",
                                                               {
-                                                                key: index,
-                                                                class: {
-                                                                  "show-btns": hover
-                                                                },
-                                                                attrs: {
-                                                                  color:
-                                                                    "transparent",
-                                                                  icon: ""
-                                                                }
+                                                                staticClass:
+                                                                  "ma-0 body-1 font-weight-bold font-italic text-left"
                                                               },
                                                               [
-                                                                _c(
-                                                                  "v-icon",
+                                                                _vm._v(
+                                                                  "\r\n                          " +
+                                                                    _vm._s(
+                                                                      item.text
+                                                                    ) +
+                                                                    "\r\n                        "
+                                                                )
+                                                              ]
+                                                            ),
+                                                            _vm._v(" "),
+                                                            _c(
+                                                              "p",
+                                                              {
+                                                                staticClass:
+                                                                  "caption font-weight-medium font-italic text-left"
+                                                              },
+                                                              [
+                                                                _vm._v(
+                                                                  "\r\n                          " +
+                                                                    _vm._s(
+                                                                      item.subtext
+                                                                    ) +
+                                                                    "\r\n                        "
+                                                                )
+                                                              ]
+                                                            )
+                                                          ]),
+                                                          _vm._v(" "),
+                                                          _c(
+                                                            "div",
+                                                            {
+                                                              staticClass:
+                                                                "align-self-center"
+                                                            },
+                                                            _vm._l(
+                                                              _vm.icons,
+                                                              function(
+                                                                icon,
+                                                                index
+                                                              ) {
+                                                                return _c(
+                                                                  "v-btn",
                                                                   {
+                                                                    key: index,
                                                                     class: {
                                                                       "show-btns": hover
                                                                     },
                                                                     attrs: {
                                                                       color:
-                                                                        "transparent"
+                                                                        "transparent",
+                                                                      icon: ""
                                                                     }
                                                                   },
                                                                   [
-                                                                    _vm._v(
-                                                                      "\r\n                            " +
-                                                                        _vm._s(
-                                                                          icon
-                                                                        ) +
-                                                                        "\r\n                          "
+                                                                    _c(
+                                                                      "v-icon",
+                                                                      {
+                                                                        class: {
+                                                                          "show-btns": hover
+                                                                        },
+                                                                        attrs: {
+                                                                          color:
+                                                                            "transparent"
+                                                                        }
+                                                                      },
+                                                                      [
+                                                                        _vm._v(
+                                                                          "\r\n                            " +
+                                                                            _vm._s(
+                                                                              icon
+                                                                            ) +
+                                                                            "\r\n                          "
+                                                                        )
+                                                                      ]
                                                                     )
-                                                                  ]
+                                                                  ],
+                                                                  1
                                                                 )
-                                                              ],
-                                                              1
-                                                            )
-                                                          }
-                                                        ),
-                                                        1
+                                                              }
+                                                            ),
+                                                            1
+                                                          )
+                                                        ]
                                                       )
-                                                    ]
+                                                    ],
+                                                    1
                                                   )
                                                 ],
                                                 1
@@ -33719,28 +33830,26 @@ var render = function() {
                                             ],
                                             1
                                           )
-                                        ],
-                                        1
-                                      )
-                                    ]
-                                  }
-                                }
-                              ],
-                              null,
-                              true
-                            )
-                          })
-                        ],
-                        1
-                      )
-                    ]
-                  })
+                                        ]
+                                      }
+                                    }
+                                  ],
+                                  null,
+                                  true
+                                )
+                              })
+                            ],
+                            1
+                          )
+                        ]
+                      })
+                    ],
+                    2
+                  )
                 ],
-                2
+                1
               )
-            ],
-            1
-          ),
+            : _vm._e(),
           _vm._v(" "),
           _c(
             "div",
@@ -33780,7 +33889,12 @@ var render = function() {
                 "v-btn",
                 {
                   staticClass: "mx-2",
-                  attrs: { fab: "", dark: "", large: "", color: "cyan" }
+                  attrs: { fab: "", dark: "", large: "", color: "cyan" },
+                  on: {
+                    click: function($event) {
+                      _vm.apareceForm = !_vm.apareceForm
+                    }
+                  }
                 },
                 [_c("v-icon", { attrs: { dark: "" } }, [_vm._v("mdi-pencil")])],
                 1

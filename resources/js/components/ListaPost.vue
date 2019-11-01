@@ -2,8 +2,39 @@
 
 <template>
 <div id="app">
-  <v-app id="inspire">
-    <v-container class="pa-4 text-center">
+   <v-app id="inspire">
+ 
+     <v-container v-if="apareceForm"> 
+        <form>
+    <v-text-field
+      v-model="titulo"      
+      :counter="10"
+      label="Titulo"
+      required
+      
+    ></v-text-field>
+    <v-text-field
+      v-model="conteudo"      
+      label="Conteudo"
+      required      
+    ></v-text-field>    
+    <v-checkbox
+      v-model="checkbox"      
+      label="Do you agree?"
+      required      
+    ></v-checkbox>
+
+    <v-btn class="mr-4" @click="submit">Postar</v-btn>
+    <v-btn @click="clear">limpar</v-btn>
+  </form>
+     </v-container> 
+
+    <v-container v-if="!apareceForm" class="pa-4 text-center">
+       
+ 
+
+
+
       <v-row class="fill-height" align="center" justify="center">
         <template v-for="(item, i) in posts">
           <v-col
@@ -13,6 +44,7 @@
           >
             <v-hover v-slot:default="{ hover }">
               <v-card
+              color="pink darken-2"
                 :elevation="hover ? 12 : 2"
                 :class="{ 'on-hover': hover }"
               >
@@ -20,7 +52,7 @@
                   :src="item.img"
                   height="225px"
                 >
-                  <v-card-title class="title white--text">
+                  <v-card-title  class="title white--text">
                     <v-row
                       class="fill-height flex-column"
                       justify="space-between"
@@ -75,7 +107,7 @@
       </v-btn> 
       
   
-      <v-btn class="mx-2" fab dark large color="cyan">
+      <v-btn  @click="apareceForm = !apareceForm" class="mx-2" fab dark large color="cyan">
         <v-icon dark>mdi-pencil</v-icon>
       </v-btn>  
       
@@ -90,6 +122,10 @@
     data: () => ({
     icons: ['mdi-rewind', 'mdi-play', 'mdi-fast-forward'],
     posts:[],
+    checkbox:false,
+    titulo:'',
+    conteudo:'',
+    apareceForm:false,
     transparent: 'rgba(255, 255, 255, 0)',
   }),
 
@@ -108,6 +144,23 @@
                         
                     })
                     .catch(err => console.log(err));
+            },
+            submit(){
+              fetch('/post/', {
+              method: 'post',
+              credentials: "same-origin",
+              body: 'olá'
+            }).then(function(response){
+                  this.getPosts()
+              })  .then(function(json){
+
+                // change course
+
+              })
+                .catch(function(error){
+
+
+                });
             }
         },
 
