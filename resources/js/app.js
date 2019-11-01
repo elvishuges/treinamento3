@@ -6,7 +6,26 @@
 
 require('./bootstrap');
 
+import Vue from 'vue'
+import colors from 'vuetify/es5/util/colors'
+import 'vuetify/dist/vuetify.min.css'
 window.Vue = require('vue');
+import Vuetify from 'vuetify'
+Vue.use(Vuetify, {
+    theme: {
+      light: {
+          primary: colors.purple,
+          secondary: colors.grey.darken1,
+          accent: colors.shades.black,
+          error: colors.red.accent3,
+        }
+    }
+  });
+
+
+
+
+
 
 /**
  * The following block of code may be used to automatically register your
@@ -22,6 +41,7 @@ window.Vue = require('vue');
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('lista-post', require('./components/ListaPost.vue').default);
 
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -30,4 +50,5 @@ Vue.component('lista-post', require('./components/ListaPost.vue').default);
 
 const app = new Vue({
     el: '#app',
+    vuetify : new Vuetify()
 });
