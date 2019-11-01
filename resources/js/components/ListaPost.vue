@@ -1,144 +1,130 @@
+
+
 <template>
 <div id="app">
   <v-app id="inspire">
-    <v-card
-      class="mx-auto"
-      max-width="400"
-    >
-      <v-toolbar
-        color="purple"
-        dark
-      >
-        <v-app-bar-nav-icon></v-app-bar-nav-icon>
+    <v-container class="pa-4 text-center">
+      <v-row class="fill-height" align="center" justify="center">
+        <template v-for="(item, i) in posts">
+          <v-col
+            :key="i"
+            cols="12"
+            md="3"
+          >
+            <v-hover v-slot:default="{ hover }">
+              <v-card
+                :elevation="hover ? 12 : 2"
+                :class="{ 'on-hover': hover }"
+              >
+                <v-img
+                  :src="item.img"
+                  height="225px"
+                >
+                  <v-card-title class="title white--text">
+                    <v-row
+                      class="fill-height flex-column"
+                      justify="space-between"
+                    >
+                      <p dark class="mt-4 dark subheading text-left">{{ item.titulo }}</p>
   
-        <v-toolbar-title>Settings</v-toolbar-title>
+                      <div>
+                        <p class="ma-0 body-1 font-weight-bold font-italic text-left">
+                          {{ item.text }}
+                        </p>
+                        <p class="caption font-weight-medium font-italic text-left">
+                          {{ item.subtext }}
+                        </p>
+                      </div>
   
-        <v-spacer></v-spacer>
+                      <div class="align-self-center">
+                        <v-btn
+                          v-for="(icon, index) in icons"
+                          :key="index"
+                          :class="{ 'show-btns': hover }"
+                          color="transparent"
+                          icon
+                        >
+                          <v-icon
+                            :class="{ 'show-btns': hover }"
+                            color="transparent"
+                          >
+                            {{ icon }}
+                          </v-icon>
+                        </v-btn>
+                      </div>
+                    </v-row>
+                  </v-card-title>
+                </v-img>
+              </v-card>
+            </v-hover>
+          </v-col>
+        </template>
+      </v-row>
+    </v-container>
+     <div class="text-center">
+      <v-btn class="mx-2" fab dark small color="primary">
+        <v-icon dark>mdi-minus</v-icon>
+      </v-btn>
   
-        <v-btn icon>
-          <v-icon>mdi-magnify</v-icon>
-        </v-btn>
-      </v-toolbar>
+      <v-btn class="mx-2" fab dark small color="pink">
+        <v-icon dark>mdi-heart</v-icon>
+      </v-btn>
   
-      <v-list
-        subheader
-        three-line
-      >
-        <v-subheader>User Controls</v-subheader>
+      <v-btn class="mx-2" fab dark color="indigo">
+        <v-icon dark>mdi-plus</v-icon>
+      </v-btn> 
+      
   
-        <v-list-item>
-          <v-list-item-content>
-            <v-list-item-title>Content filtering</v-list-item-title>
-            <v-list-item-subtitle>Set the content filtering level to restrict appts that can be downloaded</v-list-item-subtitle>
-          </v-list-item-content>
-        </v-list-item>
-  
-        <v-list-item>
-          <v-list-item-content>
-            <v-list-item-title>Password</v-list-item-title>
-            <v-list-item-subtitle>Require password for purchase or use password to restrict purchase</v-list-item-subtitle>
-          </v-list-item-content>
-        </v-list-item>
-      </v-list>
-  
-      <v-divider></v-divider>
-  
-      <v-list
-        flat
-        subheader
-        three-line
-      >
-        <v-subheader>General</v-subheader>
-  
-        <v-list-item-group
-          v-model="settings"
-          multiple
-          active-class=""
-        >
-          <v-list-item>
-            <template v-slot:default="{ active }">
-              <v-list-item-action>
-                <v-checkbox v-model="active"></v-checkbox>
-              </v-list-item-action>
-  
-              <v-list-item-content>
-                <v-list-item-title>Notifications</v-list-item-title>
-                <v-list-item-subtitle>Notify me about updates to apps or games that I downloaded</v-list-item-subtitle>
-              </v-list-item-content>
-            </template>
-          </v-list-item>
-  
-          <v-list-item>
-            <template v-slot:default="{ active }">
-              <v-list-item-action>
-                <v-checkbox v-model="active"></v-checkbox>
-              </v-list-item-action>
-  
-              <v-list-item-content>
-                <v-list-item-title>Sound</v-list-item-title>
-                <v-list-item-subtitle>Auto-update apps at any time. Data charges may apply</v-list-item-subtitle>
-              </v-list-item-content>
-            </template>
-          </v-list-item>
-  
-          <v-list-item>
-            <template v-slot:default="{ active }">
-              <v-list-item-action>
-                <v-checkbox v-model="active"></v-checkbox>
-              </v-list-item-action>
-  
-              <v-list-item-content>
-                <v-list-item-title>Auto-add widgets</v-list-item-title>
-                <v-list-item-subtitle>Automatically add home screen widgets when downloads complete</v-list-item-subtitle>
-              </v-list-item-content>
-            </template>
-          </v-list-item>
-        </v-list-item-group>
-      </v-list>
-    </v-card>
+      <v-btn class="mx-2" fab dark large color="cyan">
+        <v-icon dark>mdi-pencil</v-icon>
+      </v-btn>  
+      
+    </div>
   </v-app>
 </div>
 </template>
  
 <script>
-  export default {
+  export default {      
       
     data: () => ({
-    selected: [2],
-     settings: [],
-    items: [
-      {
-        action: '15 min',
-        headline: 'Brunch this weekend?',
-        title: 'Ali Connors',
-        subtitle: "I'll be in your neighborhood doing errands this weekend. Do you want to hang out?",
-      },
-      {
-        action: '2 hr',
-        headline: 'Summer BBQ',
-        title: 'me, Scrott, Jennifer',
-        subtitle: "Wish I could come, but I'm out of town this weekend.",
-      },
-      {
-        action: '6 hr',
-        headline: 'Oui oui',
-        title: 'Sandra Adams',
-        subtitle: 'Do you have Paris recommendations? Have you ever been?',
-      },
-      {
-        action: '12 hr',
-        headline: 'Birthday gift',
-        title: 'Trevor Hansen',
-        subtitle: 'Have any ideas about what we should get Heidi for her birthday?',
-      },
-      {
-        action: '18hr',
-        headline: 'Recipe to try',
-        title: 'Britta Holt',
-        subtitle: 'We should eat this: Grate, Squash, Corn, and tomatillo Tacos.',
-      },
-    ],
+    icons: ['mdi-rewind', 'mdi-play', 'mdi-fast-forward'],
+    posts:[],
+    transparent: 'rgba(255, 255, 255, 0)',
   }),
+
+  created() {
+            this.getPosts();
+        },
+ 
+        methods: {
+            getPosts(api_url) {
+                api_url = api_url || '/posts/';
+                fetch(api_url)
+                    .then(response => response.json())
+                    .then(response => {
+                        this.posts = response.data;
+                        console.log(this.posts);
+                        
+                    })
+                    .catch(err => console.log(err));
+            }
+        },
 
   }
 </script>
+
+
+<style lang="stylus">
+.v-card {
+transition: opacity .4s ease-in-out;
+}
+
+.v-card:not(.on-hover) {
+opacity: 0.6;
+ }
+
+.show-btns {
+color: rgba(255, 255, 255, 1) !important;
+}
+</style>

@@ -1947,56 +1947,52 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      selected: [2],
-      settings: [],
-      items: [{
-        action: '15 min',
-        headline: 'Brunch this weekend?',
-        title: 'Ali Connors',
-        subtitle: "I'll be in your neighborhood doing errands this weekend. Do you want to hang out?"
-      }, {
-        action: '2 hr',
-        headline: 'Summer BBQ',
-        title: 'me, Scrott, Jennifer',
-        subtitle: "Wish I could come, but I'm out of town this weekend."
-      }, {
-        action: '6 hr',
-        headline: 'Oui oui',
-        title: 'Sandra Adams',
-        subtitle: 'Do you have Paris recommendations? Have you ever been?'
-      }, {
-        action: '12 hr',
-        headline: 'Birthday gift',
-        title: 'Trevor Hansen',
-        subtitle: 'Have any ideas about what we should get Heidi for her birthday?'
-      }, {
-        action: '18hr',
-        headline: 'Recipe to try',
-        title: 'Britta Holt',
-        subtitle: 'We should eat this: Grate, Squash, Corn, and tomatillo Tacos.'
-      }]
+      icons: ['mdi-rewind', 'mdi-play', 'mdi-fast-forward'],
+      posts: [],
+      transparent: 'rgba(255, 255, 255, 0)'
     };
+  },
+  created: function created() {
+    this.getPosts();
+  },
+  methods: {
+    getPosts: function getPosts(api_url) {
+      var _this = this;
+
+      api_url = api_url || '/posts/';
+      fetch(api_url).then(function (response) {
+        return response.json();
+      }).then(function (response) {
+        _this.posts = response.data;
+        console.log(_this.posts);
+      })["catch"](function (err) {
+        return console.log(err);
+      });
+    }
   }
 });
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/stylus-loader/index.js!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ListaPost.vue?vue&type=style&index=0&lang=stylus&":
+/*!**************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--10-2!./node_modules/stylus-loader!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ListaPost.vue?vue&type=style&index=0&lang=stylus& ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".v-card {\n  -webkit-transition: opacity 0.4s ease-in-out;\n  transition: opacity 0.4s ease-in-out;\n}\n.v-card:not(.on-hover) {\n  opacity: 0.6;\n}\n.show-btns {\n  color: #fff !important;\n}\n", ""]);
+
+// exports
+
 
 /***/ }),
 
@@ -32877,6 +32873,36 @@ process.umask = function() { return 0; };
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/stylus-loader/index.js!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ListaPost.vue?vue&type=style&index=0&lang=stylus&":
+/*!******************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--10-2!./node_modules/stylus-loader!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ListaPost.vue?vue&type=style&index=0&lang=stylus& ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../node_modules/css-loader!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--10-2!../../../node_modules/stylus-loader!../../../node_modules/vue-loader/lib??vue-loader-options!./ListaPost.vue?vue&type=style&index=0&lang=stylus& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/stylus-loader/index.js!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ListaPost.vue?vue&type=style&index=0&lang=stylus&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/lib/addStyles.js":
 /*!****************************************************!*\
   !*** ./node_modules/style-loader/lib/addStyles.js ***!
@@ -33524,234 +33550,239 @@ var render = function() {
         { attrs: { id: "inspire" } },
         [
           _c(
-            "v-card",
-            { staticClass: "mx-auto", attrs: { "max-width": "400" } },
+            "v-container",
+            { staticClass: "pa-4 text-center" },
             [
               _c(
-                "v-toolbar",
-                { attrs: { color: "purple", dark: "" } },
+                "v-row",
+                {
+                  staticClass: "fill-height",
+                  attrs: { align: "center", justify: "center" }
+                },
                 [
-                  _c("v-app-bar-nav-icon"),
-                  _vm._v(" "),
-                  _c("v-toolbar-title", [_vm._v("Settings")]),
-                  _vm._v(" "),
-                  _c("v-spacer"),
-                  _vm._v(" "),
-                  _c(
-                    "v-btn",
-                    { attrs: { icon: "" } },
-                    [_c("v-icon", [_vm._v("mdi-magnify")])],
-                    1
-                  )
+                  _vm._l(_vm.posts, function(item, i) {
+                    return [
+                      _c(
+                        "v-col",
+                        { key: i, attrs: { cols: "12", md: "3" } },
+                        [
+                          _c("v-hover", {
+                            scopedSlots: _vm._u(
+                              [
+                                {
+                                  key: "default",
+                                  fn: function(ref) {
+                                    var hover = ref.hover
+                                    return [
+                                      _c(
+                                        "v-card",
+                                        {
+                                          class: { "on-hover": hover },
+                                          attrs: { elevation: hover ? 12 : 2 }
+                                        },
+                                        [
+                                          _c(
+                                            "v-img",
+                                            {
+                                              attrs: {
+                                                src: item.img,
+                                                height: "225px"
+                                              }
+                                            },
+                                            [
+                                              _c(
+                                                "v-card-title",
+                                                {
+                                                  staticClass:
+                                                    "title white--text"
+                                                },
+                                                [
+                                                  _c(
+                                                    "v-row",
+                                                    {
+                                                      staticClass:
+                                                        "fill-height flex-column",
+                                                      attrs: {
+                                                        justify: "space-between"
+                                                      }
+                                                    },
+                                                    [
+                                                      _c(
+                                                        "p",
+                                                        {
+                                                          staticClass:
+                                                            "mt-4 dark subheading text-left",
+                                                          attrs: { dark: "" }
+                                                        },
+                                                        [
+                                                          _vm._v(
+                                                            _vm._s(item.titulo)
+                                                          )
+                                                        ]
+                                                      ),
+                                                      _vm._v(" "),
+                                                      _c("div", [
+                                                        _c(
+                                                          "p",
+                                                          {
+                                                            staticClass:
+                                                              "ma-0 body-1 font-weight-bold font-italic text-left"
+                                                          },
+                                                          [
+                                                            _vm._v(
+                                                              "\r\n                          " +
+                                                                _vm._s(
+                                                                  item.text
+                                                                ) +
+                                                                "\r\n                        "
+                                                            )
+                                                          ]
+                                                        ),
+                                                        _vm._v(" "),
+                                                        _c(
+                                                          "p",
+                                                          {
+                                                            staticClass:
+                                                              "caption font-weight-medium font-italic text-left"
+                                                          },
+                                                          [
+                                                            _vm._v(
+                                                              "\r\n                          " +
+                                                                _vm._s(
+                                                                  item.subtext
+                                                                ) +
+                                                                "\r\n                        "
+                                                            )
+                                                          ]
+                                                        )
+                                                      ]),
+                                                      _vm._v(" "),
+                                                      _c(
+                                                        "div",
+                                                        {
+                                                          staticClass:
+                                                            "align-self-center"
+                                                        },
+                                                        _vm._l(
+                                                          _vm.icons,
+                                                          function(
+                                                            icon,
+                                                            index
+                                                          ) {
+                                                            return _c(
+                                                              "v-btn",
+                                                              {
+                                                                key: index,
+                                                                class: {
+                                                                  "show-btns": hover
+                                                                },
+                                                                attrs: {
+                                                                  color:
+                                                                    "transparent",
+                                                                  icon: ""
+                                                                }
+                                                              },
+                                                              [
+                                                                _c(
+                                                                  "v-icon",
+                                                                  {
+                                                                    class: {
+                                                                      "show-btns": hover
+                                                                    },
+                                                                    attrs: {
+                                                                      color:
+                                                                        "transparent"
+                                                                    }
+                                                                  },
+                                                                  [
+                                                                    _vm._v(
+                                                                      "\r\n                            " +
+                                                                        _vm._s(
+                                                                          icon
+                                                                        ) +
+                                                                        "\r\n                          "
+                                                                    )
+                                                                  ]
+                                                                )
+                                                              ],
+                                                              1
+                                                            )
+                                                          }
+                                                        ),
+                                                        1
+                                                      )
+                                                    ]
+                                                  )
+                                                ],
+                                                1
+                                              )
+                                            ],
+                                            1
+                                          )
+                                        ],
+                                        1
+                                      )
+                                    ]
+                                  }
+                                }
+                              ],
+                              null,
+                              true
+                            )
+                          })
+                        ],
+                        1
+                      )
+                    ]
+                  })
                 ],
+                2
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "text-center" },
+            [
+              _c(
+                "v-btn",
+                {
+                  staticClass: "mx-2",
+                  attrs: { fab: "", dark: "", small: "", color: "primary" }
+                },
+                [_c("v-icon", { attrs: { dark: "" } }, [_vm._v("mdi-minus")])],
                 1
               ),
               _vm._v(" "),
               _c(
-                "v-list",
-                { attrs: { subheader: "", "three-line": "" } },
-                [
-                  _c("v-subheader", [_vm._v("User Controls")]),
-                  _vm._v(" "),
-                  _c(
-                    "v-list-item",
-                    [
-                      _c(
-                        "v-list-item-content",
-                        [
-                          _c("v-list-item-title", [
-                            _vm._v("Content filtering")
-                          ]),
-                          _vm._v(" "),
-                          _c("v-list-item-subtitle", [
-                            _vm._v(
-                              "Set the content filtering level to restrict appts that can be downloaded"
-                            )
-                          ])
-                        ],
-                        1
-                      )
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "v-list-item",
-                    [
-                      _c(
-                        "v-list-item-content",
-                        [
-                          _c("v-list-item-title", [_vm._v("Password")]),
-                          _vm._v(" "),
-                          _c("v-list-item-subtitle", [
-                            _vm._v(
-                              "Require password for purchase or use password to restrict purchase"
-                            )
-                          ])
-                        ],
-                        1
-                      )
-                    ],
-                    1
-                  )
-                ],
+                "v-btn",
+                {
+                  staticClass: "mx-2",
+                  attrs: { fab: "", dark: "", small: "", color: "pink" }
+                },
+                [_c("v-icon", { attrs: { dark: "" } }, [_vm._v("mdi-heart")])],
                 1
               ),
               _vm._v(" "),
-              _c("v-divider"),
+              _c(
+                "v-btn",
+                {
+                  staticClass: "mx-2",
+                  attrs: { fab: "", dark: "", color: "indigo" }
+                },
+                [_c("v-icon", { attrs: { dark: "" } }, [_vm._v("mdi-plus")])],
+                1
+              ),
               _vm._v(" "),
               _c(
-                "v-list",
-                { attrs: { flat: "", subheader: "", "three-line": "" } },
-                [
-                  _c("v-subheader", [_vm._v("General")]),
-                  _vm._v(" "),
-                  _c(
-                    "v-list-item-group",
-                    {
-                      attrs: { multiple: "", "active-class": "" },
-                      model: {
-                        value: _vm.settings,
-                        callback: function($$v) {
-                          _vm.settings = $$v
-                        },
-                        expression: "settings"
-                      }
-                    },
-                    [
-                      _c("v-list-item", {
-                        scopedSlots: _vm._u([
-                          {
-                            key: "default",
-                            fn: function(ref) {
-                              var active = ref.active
-                              return [
-                                _c(
-                                  "v-list-item-action",
-                                  [
-                                    _c("v-checkbox", {
-                                      model: {
-                                        value: active,
-                                        callback: function($$v) {
-                                          active = $$v
-                                        },
-                                        expression: "active"
-                                      }
-                                    })
-                                  ],
-                                  1
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "v-list-item-content",
-                                  [
-                                    _c("v-list-item-title", [
-                                      _vm._v("Notifications")
-                                    ]),
-                                    _vm._v(" "),
-                                    _c("v-list-item-subtitle", [
-                                      _vm._v(
-                                        "Notify me about updates to apps or games that I downloaded"
-                                      )
-                                    ])
-                                  ],
-                                  1
-                                )
-                              ]
-                            }
-                          }
-                        ])
-                      }),
-                      _vm._v(" "),
-                      _c("v-list-item", {
-                        scopedSlots: _vm._u([
-                          {
-                            key: "default",
-                            fn: function(ref) {
-                              var active = ref.active
-                              return [
-                                _c(
-                                  "v-list-item-action",
-                                  [
-                                    _c("v-checkbox", {
-                                      model: {
-                                        value: active,
-                                        callback: function($$v) {
-                                          active = $$v
-                                        },
-                                        expression: "active"
-                                      }
-                                    })
-                                  ],
-                                  1
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "v-list-item-content",
-                                  [
-                                    _c("v-list-item-title", [_vm._v("Sound")]),
-                                    _vm._v(" "),
-                                    _c("v-list-item-subtitle", [
-                                      _vm._v(
-                                        "Auto-update apps at any time. Data charges may apply"
-                                      )
-                                    ])
-                                  ],
-                                  1
-                                )
-                              ]
-                            }
-                          }
-                        ])
-                      }),
-                      _vm._v(" "),
-                      _c("v-list-item", {
-                        scopedSlots: _vm._u([
-                          {
-                            key: "default",
-                            fn: function(ref) {
-                              var active = ref.active
-                              return [
-                                _c(
-                                  "v-list-item-action",
-                                  [
-                                    _c("v-checkbox", {
-                                      model: {
-                                        value: active,
-                                        callback: function($$v) {
-                                          active = $$v
-                                        },
-                                        expression: "active"
-                                      }
-                                    })
-                                  ],
-                                  1
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "v-list-item-content",
-                                  [
-                                    _c("v-list-item-title", [
-                                      _vm._v("Auto-add widgets")
-                                    ]),
-                                    _vm._v(" "),
-                                    _c("v-list-item-subtitle", [
-                                      _vm._v(
-                                        "Automatically add home screen widgets when downloads complete"
-                                      )
-                                    ])
-                                  ],
-                                  1
-                                )
-                              ]
-                            }
-                          }
-                        ])
-                      })
-                    ],
-                    1
-                  )
-                ],
+                "v-btn",
+                {
+                  staticClass: "mx-2",
+                  attrs: { fab: "", dark: "", large: "", color: "cyan" }
+                },
+                [_c("v-icon", { attrs: { dark: "" } }, [_vm._v("mdi-pencil")])],
                 1
               )
             ],
@@ -83856,7 +83887,9 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ListaPost_vue_vue_type_template_id_306cf130___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ListaPost.vue?vue&type=template&id=306cf130& */ "./resources/js/components/ListaPost.vue?vue&type=template&id=306cf130&");
 /* harmony import */ var _ListaPost_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ListaPost.vue?vue&type=script&lang=js& */ "./resources/js/components/ListaPost.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _ListaPost_vue_vue_type_style_index_0_lang_stylus___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ListaPost.vue?vue&type=style&index=0&lang=stylus& */ "./resources/js/components/ListaPost.vue?vue&type=style&index=0&lang=stylus&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
 
 
 
@@ -83864,7 +83897,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* normalize component */
 
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
   _ListaPost_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
   _ListaPost_vue_vue_type_template_id_306cf130___WEBPACK_IMPORTED_MODULE_0__["render"],
   _ListaPost_vue_vue_type_template_id_306cf130___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
@@ -83893,6 +83926,22 @@ component.options.__file = "resources/js/components/ListaPost.vue"
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ListaPost_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./ListaPost.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ListaPost.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ListaPost_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/ListaPost.vue?vue&type=style&index=0&lang=stylus&":
+/*!***********************************************************************************!*\
+  !*** ./resources/js/components/ListaPost.vue?vue&type=style&index=0&lang=stylus& ***!
+  \***********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_10_2_node_modules_stylus_loader_index_js_node_modules_vue_loader_lib_index_js_vue_loader_options_ListaPost_vue_vue_type_style_index_0_lang_stylus___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader!../../../node_modules/css-loader!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--10-2!../../../node_modules/stylus-loader!../../../node_modules/vue-loader/lib??vue-loader-options!./ListaPost.vue?vue&type=style&index=0&lang=stylus& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/stylus-loader/index.js!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ListaPost.vue?vue&type=style&index=0&lang=stylus&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_10_2_node_modules_stylus_loader_index_js_node_modules_vue_loader_lib_index_js_vue_loader_options_ListaPost_vue_vue_type_style_index_0_lang_stylus___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_10_2_node_modules_stylus_loader_index_js_node_modules_vue_loader_lib_index_js_vue_loader_options_ListaPost_vue_vue_type_style_index_0_lang_stylus___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_10_2_node_modules_stylus_loader_index_js_node_modules_vue_loader_lib_index_js_vue_loader_options_ListaPost_vue_vue_type_style_index_0_lang_stylus___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_10_2_node_modules_stylus_loader_index_js_node_modules_vue_loader_lib_index_js_vue_loader_options_ListaPost_vue_vue_type_style_index_0_lang_stylus___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_10_2_node_modules_stylus_loader_index_js_node_modules_vue_loader_lib_index_js_vue_loader_options_ListaPost_vue_vue_type_style_index_0_lang_stylus___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
 
