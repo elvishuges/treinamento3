@@ -1998,7 +1998,7 @@ __webpack_require__.r(__webpack_exports__);
     getPosts: function getPosts(api_url) {
       var _this = this;
 
-      api_url = api_url || '/posts/';
+      api_url = api_url || '/posts';
       fetch(api_url).then(function (response) {
         return response.json();
       }).then(function (response) {
@@ -2008,16 +2008,35 @@ __webpack_require__.r(__webpack_exports__);
         return console.log(err);
       });
     },
-    submit: function submit() {
-      fetch('/post/', {
-        method: 'post',
-        credentials: "same-origin",
-        body: 'olá'
+    formSubmit: function formSubmit(e) {
+      e.preventDefault();
+      var currentObj = this;
+      var api_url = '/posts';
+      axios.post(api_url, {
+        user_id: 1,
+        titulo: this.titulo,
+        conteudo: this.conteudo
       }).then(function (response) {
+        console.log(response.data);
         this.getPosts();
-      }).then(function (json) {// change course
-      })["catch"](function (error) {});
+        this.apareceForm = false;
+      }.bind(this))["catch"](function (error) {
+        console.log(error);
+      });
     }
+  },
+  submit: function submit() {
+    fetch('posts', {
+      method: 'POST',
+      body: JSON.stringify({
+        email: 'emailHere',
+        password: 'passwordHere'
+      })
+    }).then(function (response) {
+      console.log('resposta', response);
+      this.getPosts();
+    }).then(function (json) {// change course
+    })["catch"](function (error) {});
   }
 });
 
@@ -33635,11 +33654,11 @@ var render = function() {
                     _vm._v(" "),
                     _c(
                       "v-btn",
-                      { staticClass: "mr-4", on: { click: _vm.submit } },
+                      { staticClass: "mr-4", on: { click: _vm.formSubmit } },
                       [_vm._v("Postar")]
                     ),
                     _vm._v(" "),
-                    _c("v-btn", { on: { click: _vm.clear } }, [
+                    _c("v-btn", { on: { click: function($event) {} } }, [
                       _vm._v("limpar")
                     ])
                   ],
@@ -33679,7 +33698,7 @@ var render = function() {
                                             {
                                               class: { "on-hover": hover },
                                               attrs: {
-                                                color: "pink darken-2",
+                                                color: "green darken-2",
                                                 elevation: hover ? 12 : 2
                                               }
                                             },

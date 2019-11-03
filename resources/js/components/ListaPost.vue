@@ -24,8 +24,8 @@
       required      
     ></v-checkbox>
 
-    <v-btn class="mr-4" @click="submit">Postar</v-btn>
-    <v-btn @click="clear">limpar</v-btn>
+    <v-btn class="mr-4" @click="formSubmit">Postar</v-btn>
+    <v-btn @click="">limpar</v-btn>
   </form>
      </v-container> 
 
@@ -44,7 +44,7 @@
           >
             <v-hover v-slot:default="{ hover }">
               <v-card
-              color="pink darken-2"
+              color="green darken-2"
                 :elevation="hover ? 12 : 2"
                 :class="{ 'on-hover': hover }"
               >
@@ -135,7 +135,7 @@
  
         methods: {
             getPosts(api_url) {
-                api_url = api_url || '/posts/';
+                api_url = api_url || '/posts';
                 fetch(api_url)
                     .then(response => response.json())
                     .then(response => {
@@ -145,13 +145,40 @@
                     })
                     .catch(err => console.log(err));
             },
+
+                formSubmit(e) {
+                e.preventDefault();
+                let currentObj = this;
+                var api_url = '/posts';
+                axios.post(api_url, {
+                    user_id:1,
+                    titulo: this.titulo,
+                    conteudo: this.conteudo
+                })
+                .then(function (response) {
+                    console.log( response.data);
+                    this.getPosts();
+                    this.apareceForm =  false
+                }.bind(this))
+                .catch(function (error) {
+                    console.log( error);
+                    
+                });
+            }
+        },
+
             submit(){
-              fetch('/post/', {
-              method: 'post',
-              credentials: "same-origin",
-              body: 'olá'
+              fetch('posts', {
+              method: 'POST',
+              body: JSON.stringify({
+                  email : 'emailHere',
+                  password : 'passwordHere'
+              })             
             }).then(function(response){
+              console.log('resposta',response);
+              
                   this.getPosts()
+
               })  .then(function(json){
 
                 // change course
@@ -162,7 +189,7 @@
 
                 });
             }
-        },
+        
 
   }
 </script>

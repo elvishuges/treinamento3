@@ -42,6 +42,7 @@ class PostController extends Controller
             'conteudo' => 'required',            
             'user_id' => 'required'
         ]);
+        //return $request;
 
         if ($validator->fails()) {
             $response = [
