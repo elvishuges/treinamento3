@@ -22,7 +22,7 @@ class UserController extends Controller
         $response = [
             'success' => true,
             'data' => $data,
-            'message' => 'index users retornados com sucesso'
+            'message' => 'users retornados com sucesso'
         ];
 
         return response()->json($response, 200);
@@ -58,7 +58,7 @@ class UserController extends Controller
         $response = [
             'success' => true,
             'data' => $data,
-            'message' => 'Usuario cadastrado armazenado com sucesso.'
+            'message' => 'Usuario cadastrado com sucesso.'
         ];
 
         return response()->json($response, 200);

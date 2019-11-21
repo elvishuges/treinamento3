@@ -16,8 +16,8 @@ class ComentarioController extends Controller
      */
     public function index()
     {
-        $posts = Comentario::with('user')->get();
-        $data = $posts->toArray();
+        $comentarios = Comentario::with('user')->get();
+        $data = $comentarios->toArray();
 
         $response = [
             'success' => true,
